@@ -4,16 +4,15 @@ const ImageDirective = require('../../lib/directives/image')(BaseDirective);
 const vanilla = new ImageDirective();
 
 describe('.constructor', () => {
-
   test('sets multiple=false by default', () => {
     expect(vanilla.options.multiple).toBeFalsy();
   });
 
   test('accepts a multiple attribute', () => {
-    const directive = new BaseDirective({ multiple: true })
+    const directive = new BaseDirective({ multiple: true });
     expect(directive.options.multiple).toBeTruthy();
-  })
-})
+  });
+});
 
 describe('#input', () => {
   test('renders a file/hidden input combo by default', () => {
@@ -39,16 +38,16 @@ describe('#input', () => {
   });
 
   test('renders an add button if there can be multiple images', () => {
-    const directive = new ImageDirective({ multiple: true })
+    const directive = new ImageDirective({ multiple: true });
     expect(directive.input('test')).toMatch(/Add new/);
   });
 
   test('renders all images from the array', () => {
     const directive = new ImageDirective({ multiple: true });
-    const input = directive.input(['img1', 'img2'])
+    const input = directive.input(['img1', 'img2']);
     expect(input).toMatch(/img1/);
     expect(input).toMatch(/img2/);
-  })
+  });
 });
 
 describe('#render', () => {
@@ -77,7 +76,7 @@ describe('#render', () => {
 
   test('renders multiple images if multiple is true', () => {
     const directive = new ImageDirective({ multiple: true });
-    const render = directive.render(['img1', 'img2'])
-    expect(/(<img src=)/.exec(render).length).toEqual(2)
-  })
+    const render = directive.render(['img1', 'img2']);
+    expect(/(<img src=)/.exec(render).length).toEqual(2);
+  });
 });
