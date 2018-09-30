@@ -25,6 +25,11 @@ describe('#input', () => {
     expect(vanilla.input('test', 'test.jpg')).not.toMatch(/input type="checkbox"/);
     expect(vanilla.input('test')).not.toMatch(/input type="checkbox"/);
   });
+
+  test('renders an add button if there can be multiple images', () => {
+    const directive = new ImageDirective({ multiple: true })
+    expect(directive.input('test')).toMatch(/Add new/);
+  });
 });
 
 describe('#render', () => {
