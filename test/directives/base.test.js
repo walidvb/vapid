@@ -23,6 +23,15 @@ describe('.constructor', () => {
     expect(directive.render()).toEqual('testing');
     expect(directive.input()).toMatch(/value="testing"/);
   });
+
+  test('sets multiple=false by default', () => {
+    expect(vanilla.attrs.multiple).toBeFalsy();
+  });
+
+  test('accepts a multiple attribute', () => {
+    const directive = new BaseDirective({ multiple: true })
+    expect(directive.attrs.multiple).toBeTruthy();
+  })
 });
 
 describe('#htmlAttributes', () => {
