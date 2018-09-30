@@ -9,7 +9,7 @@ describe('.constructor', () => {
   });
 
   test('accepts a multiple attribute', () => {
-    const directive = new BaseDirective({ multiple: true });
+    const directive = new ImageDirective({ multiple: true });
     expect(directive.options.multiple).toBeTruthy();
   });
 });
