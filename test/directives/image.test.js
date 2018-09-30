@@ -78,6 +78,6 @@ describe('#render', () => {
   test('renders multiple images if multiple is true', () => {
     const directive = new ImageDirective({ multiple: true });
     const render = directive.render(['img1', 'img2'])
-    expect(/(<img src=)/.exec(input).length).toEqual(2)
+    expect(/(<img src=)/.exec(render).length).toEqual(2)
   })
 });
