@@ -25,12 +25,12 @@ describe('.constructor', () => {
   });
 
   test('sets multiple=false by default', () => {
-    expect(vanilla.attrs.multiple).toBeFalsy();
+    expect(vanilla.options.multiple).toBeFalsy();
   });
 
   test('accepts a multiple attribute', () => {
     const directive = new BaseDirective({ multiple: true })
-    expect(directive.attrs.multiple).toBeTruthy();
+    expect(directive.options.multiple).toBeTruthy();
   })
 });
 
@@ -44,6 +44,11 @@ describe('#htmlAttributes', () => {
 describe('#input', () => {
   test('renders a text input by default', () => {
     expect(vanilla.input('test')).toMatch(/input type="text"/);
+  });
+
+  test('renders an add button', () => {
+    const directive = new BaseDirective({ multiple: true })
+    expect(directive.input('test')).toMatch(/Add new/);
   });
 });
 
