@@ -7,6 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="csrf-token" content="<%- csrf %>">
+  <% if (liveReload) { -%><meta name="livereload" content="<%- liveReload %>"><% } -%>
 
   <link rel="stylesheet" href="/dashboard/stylesheets/dashboard.css" data-turbolinks-track="reload">
   <script src="/dashboard/javascripts/dashboard.js" data-turbolinks-track="reload"></script>
@@ -39,7 +40,7 @@
             <div class="header">Content</div>
             <div class="menu">
               <% contentSections.forEach(s => { %>
-                <a href="/dashboard/sections/<%- s.id %>" class="<% if (typeof section !== 'undefined' && s.id == section.id) { %>active <% } %>item">
+                <a href="/dashboard/sections/<%- s.id %>/" class="<% if (typeof section !== 'undefined' && s.id == section.id) { %>active <% } %>item">
                   <%- include(`../../assets/dashboard/images/${s.multiple ? 'multiple' : 'single'}.svg`) %>
                   <%- s.label %>
                 </a>

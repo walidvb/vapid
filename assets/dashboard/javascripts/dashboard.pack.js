@@ -6,11 +6,11 @@ Turbolinks.start();
 
 // TODO: Include as packages
 require('../vendor/semantic-ui/semantic.min');
-require('../vendor/trix/trix');
 require('../vendor/jquery.tablesort');
 
 require('./dashboard/ace');
 require('./dashboard/autosave');
+require('./dashboard/datepicker');
 require('./dashboard/hideMessage');
 require('./dashboard/range');
 require('./dashboard/semantic');
@@ -18,6 +18,7 @@ require('./dashboard/multipleInput');
 require('./dashboard/sidebar');
 require('./dashboard/sortable');
 require('./dashboard/websocket');
+require('./dashboard/wysiwyg');
 
 // CSRF
 $.ajaxSetup({

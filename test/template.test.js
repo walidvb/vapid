@@ -38,9 +38,13 @@ describe('.fromFile', () => {
   });
 
   test('reads partials from disk', () => {
-    const filePath = resolve(__dirname, 'fixtures/with_partial.html');
-    const partials = [resolve(__dirname, 'fixtures', '_partial.html')];
-    const template = Template.fromFile(filePath, partials);
+    const basePath = resolve(__dirname, 'fixtures');
+    const filePath = resolve(basePath, 'with_partials.html');
+    const partials = [
+      resolve(basePath, '_partial.html'),
+      resolve(basePath, 'subdirectory/_partial.html'),
+    ];
+    const template = Template.fromFile(filePath, basePath, partials);
 
     expect(template.render()).toMatchSnapshot();
   });
@@ -91,6 +95,13 @@ describe('#parse', () => {
   test('parses order by clause', () => {
     const orderBy = new Template('{{#section offices order=city,-name}}{{/section}}').parse();
     expect(orderBy).toMatchSnapshot();
+  });
+
+  test('parses conditionals', () => {
+    const conditional = '{{#if foo}}Foo{{/if}}';
+
+    expect(new Template(conditional).parse()).toMatchSnapshot();
+    expect(new Template(conditional, {}, { parseConditionals: true }).parse()).toMatchSnapshot();
   });
 });
 
